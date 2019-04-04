@@ -29,7 +29,7 @@ asciidoctor {
     sourceDir = 'src/docs/asciidoc'
 
     outputOptions {
-        backends = ['html5']
+        backends = ['html5', 'pdf', 'epub'] // <--- ArrayIndexOutOfBoundsException
     }
 
     sources {
