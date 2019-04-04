@@ -1,0 +1,38 @@
+plugins {
+    id 'org.asciidoctor.jvm.pdf' version '2.0.0'
+    id 'org.asciidoctor.jvm.epub' version '2.0.0'
+    id 'org.asciidoctor.jvm.convert' version '2.0.0'
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+asciidoctorEpub {
+    ebookFormats = [EPUB3]
+
+    sourceDir = 'src/docs/asciidoc'
+    sources {
+        include 'index.adoc'
+    }
+}
+
+asciidoctorPdf {
+    sourceDir = 'src/docs/asciidoc'
+    sources {
+        include 'index.adoc'
+    }
+}
+
+asciidoctor {
+    sourceDir = 'src/docs/asciidoc'
+
+    outputOptions {
+        backends = ['html5']
+    }
+
+    sources {
+        include 'index.adoc'
+    }
+}
