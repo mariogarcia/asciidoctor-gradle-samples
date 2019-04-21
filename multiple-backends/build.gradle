@@ -1,7 +1,7 @@
 plugins {
-    id 'org.asciidoctor.jvm.pdf' version '2.0.0'
-    id 'org.asciidoctor.jvm.epub' version '2.0.0'
-    id 'org.asciidoctor.jvm.convert' version '2.0.0'
+    id 'org.asciidoctor.jvm.pdf' version '2.1.0'
+    id 'org.asciidoctor.jvm.epub' version '2.1.0'
+    id 'org.asciidoctor.jvm.convert' version '2.1.0'
 }
 
 repositories {
@@ -16,6 +16,11 @@ asciidoctorEpub {
     sources {
         include 'index.adoc'
     }
+
+    asciidoctorj {
+        epubVersion = '1.5.0-alpha.8.1'
+        pdfVersion = '1.5.0-alpha.16'
+    }
 }
 
 asciidoctorPdf {
@@ -27,12 +32,11 @@ asciidoctorPdf {
 
 asciidoctor {
     sourceDir = 'src/docs/asciidoc'
-
-    outputOptions {
-        backends = ['html5', 'pdf', 'epub'] // <--- ArrayIndexOutOfBoundsException
-    }
-
     sources {
         include 'index.adoc'
+    }
+
+    outputOptions {
+        backends = ['html5', 'pdf', 'epub3']
     }
 }
